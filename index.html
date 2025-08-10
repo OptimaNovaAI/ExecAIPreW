@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive AI Masterclass | Session 1 Pre-work | OptimaNova AI</title>
+<meta name="description" content="Arrive prepared for Session 1. Ten to fifteen minutes, clear outcomes, one page of context, and two quick LLM outputs.">
+<style>
+  :root{
+    --ink:#0b0f1a; --slate:#3b4152; --muted:#606779;
+    --line:#e5e7eb; --bg:#f7f7fb;
+    --purple:#5b2ef5; --magenta:#b13cf4; --blue:#2f80ff; --dark:#111827; --good:#16a34a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
+  a{color:var(--purple);text-decoration:none} a:hover{text-decoration:underline}
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1000px 360px at -10% -40%,rgba(91,46,245,.45),transparent 60%),
+               radial-gradient(900px 340px at 110% -20%,rgba(177,60,244,.45),transparent 60%),
+               linear-gradient(135deg,var(--purple),var(--magenta)); padding:28px 20px;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .title{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
+  .title h1{margin:0;font-size:28px}
+  .pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
+        padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 32px rgba(17,24,39,.08);margin:-18px auto 28px}
+  .panel .inner{padding:22px}
+  .row{display:grid;grid-template-columns:1fr 280px; gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+  .meta{color:var(--slate);font-size:14px}
+  .badge{display:inline-block;background:var(--dark);color:#fff;border-radius:10px;padding:6px 10px;font-weight:800;font-size:12px}
+  h2{margin:18px 0 8px;font-size:20px}
+  h3{margin:14px 0 8px;font-size:16px}
+  ul{margin:8px 0 12px 20px}
+  .code{position:relative;background:#0f172a;color:#e2e8f0;border-radius:12px;padding:12px 12px 46px;overflow:auto}
+  .code pre{margin:0;white-space:pre-wrap}
+  .copybar{position:absolute;right:8px;bottom:8px;display:flex;gap:8px}
+  .btn{appearance:none;border:0;border-radius:10px;cursor:pointer;font-weight:800}
+  .btn.primary{background:var(--dark);color:#fff;padding:10px 14px}
+  .btn.soft{background:#fff;border:1px solid var(--line);padding:10px 12px}
+  .btn.link{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px 10px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .aside .box{background:#f9fafb;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .checklist li{list-style:none;position:relative;padding-left:22px;margin:6px 0}
+  .checklist li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:3px;background:#eafff1;border:1px solid #b5f1c7}
+  .checklist li:after{content:"";position:absolute;left:4px;top:8px;width:6px;height:10px;border:2px solid var(--good);border-top:0;border-left:0;transform:rotate(45deg)}
+  .note{font-size:12px;color:#64748b}
+  .footer{padding:18px 0 36px;color:var(--muted);font-size:13px}
+  @media (max-width:920px){.row{grid-template-columns:1fr}}
+  /* Inline logo sizing */
+  .logo{width:40px;height:40px}
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="brand">
+        <!-- Inline SVG logo approximation -->
+        <svg class="logo" viewBox="0 0 100 100" aria-label="OptimaNova AI">
+          <defs>
+            <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="var(--blue)"/>
+              <stop offset="1" stop-color="var(--magenta)"/>
+            </linearGradient>
+          </defs>
+          <!-- Outer ring -->
+          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--ink)" stroke-width="5"/>
+          <!-- Colored arcs -->
+          <path d="M18,50 A32,32 0 0 1 82,50" fill="none" stroke="var(--magenta)" stroke-width="6" stroke-linecap="round"/>
+          <path d="M82,50 A32,32 0 0 1 18,50" fill="none" stroke="var(--blue)" stroke-width="6" stroke-linecap="round"/>
+          <!-- N mark -->
+          <rect x="28" y="22" width="9" height="56" fill="var(--dark)"/>
+          <rect x="63" y="22" width="9" height="56" fill="#2b0b15"/>
+          <polygon points="37,22 46,22 64,78 55,78" fill="var(--dark)"/>
+        </svg>
+        <div class="name" style="font-weight:800;letter-spacing:.3px">OptimaNova AI</div>
+      </div>
+      <div class="title">
+        <h1>Session 1 Pre-work</h1>
+        <span class="pill">Executive AI Masterclass</span>
+      </div>
+      <div class="meta" style="margin-top:6px">
+        Starts Tue, Aug 12 at 12:00 PM ET, live on Zoom
+      </div>
+      <div class="cta" style="margin-top:12px">
+        <a href="https://us06web.zoom.us/j/88437686598?pwd=usDoLKH5eWEcbDFAZacRhYuW7fLOWJ.1" class="btn link">Join Session 1 on Zoom</a>
+        <a href="https://optimanova.ai/executive-ai-masterclass" class="btn link">View Agenda and FAQs</a>
+        <a href="mailto:info@optimanova.ai" class="btn link">Support</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN PANEL -->
+  <main class="panel">
+    <div class="inner wrap">
+      <div class="row">
+        <section>
+          <p class="meta"><span class="badge">Total time 10–15 minutes</span> Arrive with clear outcomes, one page of context, and two quick LLM outputs.</p>
+
+          <h2>1) Set your outcomes</h2>
+          <ul>
+            <li>By the end of this masterclass, success looks like…</li>
+            <li>The three decisions my board expects from me are…</li>
+            <li>The biggest constraint I must respect is…</li>
+          </ul>
+
+          <h2>2) Gather one page of context</h2>
+          <ul>
+            <li>A recent internal memo or report you produce often</li>
+            <li>A time-consuming task that repeats weekly</li>
+            <li>A customer, constituent, or donor journey you want to improve</li>
+          </ul>
+
+          <h2>3) Run two prompts</h2>
+
+          <div class="card code" id="code1">
+            <h3 style="color:#c7d2fe;margin-top:0">Use-case ideas</h3>
+            <pre>Act as a senior strategy advisor. Given this context [paste 3–5 sentences], list five high‑ROI GenAI use cases for my organization. For each, include: problem, who benefits, time saved, data needed, and risk flags.</pre>
+            <div class="copybar">
+              <button class="btn soft" data-copy="#code1">Copy</button>
+            </div>
+          </div>
+
+          <div class="card code" id="code2" style="margin-top:12px">
+            <h3 style="color:#c7d2fe;margin-top:0">One-page executive brief</h3>
+            <pre>Turn the attached or pasted text into a one‑page executive brief. Include: KPIs, decisions needed, risks, and a 90‑day starter plan with owners.</pre>
+            <div class="copybar">
+              <button class="btn soft" data-copy="#code2">Copy</button>
+            </div>
+          </div>
+
+          <h2>Bring to Session 1</h2>
+          <ul class="checklist">
+            <li>Your three outcomes from step 1</li>
+            <li>One page of context from step 2</li>
+            <li>Both prompt outputs from step 3</li>
+          </ul>
+
+          <p class="note">Privacy: do not paste confidential data into public AI tools. Use summaries or redacted text. We will cover safe workflows in class.</p>
+        </section>
+
+        <!-- ASIDE -->
+        <aside class="aside">
+          <div class="box">
+            <h3 style="margin-top:0">Quick links</h3>
+            <p style="margin:8px 0"><a href="https://us06web.zoom.us/j/88437686598?pwd=usDoLKH5eWEcbDFAZacRhYuW7fLOWJ.1">Join Session 1 on Zoom</a></p>
+            <p style="margin:8px 0"><a href="https://optimanova.ai/executive-ai-masterclass">Agenda and FAQs</a></p>
+            <p style="margin:8px 0"><a href="https://www.linkedin.com/groups/13355293/">LinkedIn Group</a></p>
+            <p style="margin:8px 0"><a href="https://calendly.com/joepaul11/executive-ai-masterclass">Schedule Coaching Hour</a></p>
+            <p style="margin:8px 0"><a href="https://zoom.us/test">Test Your Setup</a></p>
+          </div>
+          <div class="box" style="margin-top:14px">
+            <h3 style="margin-top:0">Need help</h3>
+            <p class="meta" style="margin:0">Email <a href="mailto:info@optimanova.ai">info@optimanova.ai</a></p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div class="footer wrap">
+    © <span id="y"></span> OptimaNova AI. All rights reserved.
+  </div>
+
+<script>
+  // Copy to clipboard
+  document.querySelectorAll('[data-copy]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const sel = btn.getAttribute('data-copy');
+      const pre = document.querySelector(sel+' pre');
+      const text = pre.innerText;
+      navigator.clipboard.writeText(text).then(()=>{
+        const t = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(()=>btn.textContent = t, 1200);
+      });
+    });
+  });
+  // Year
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
