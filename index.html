@@ -1,186 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Executive AI Masterclass | Session 1 Pre-work | OptimaNova AI</title>
-<meta name="description" content="Arrive prepared for Session 1. Ten to fifteen minutes, clear outcomes, one page of context, and two quick LLM outputs.">
-<style>
-  :root{
-    --ink:#0b0f1a; --slate:#3b4152; --muted:#606779;
-    --line:#e5e7eb; --bg:#f7f7fb;
-    --purple:#5b2ef5; --magenta:#b13cf4; --blue:#2f80ff; --dark:#111827; --good:#16a34a;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif}
-  a{color:var(--purple);text-decoration:none} a:hover{text-decoration:underline}
-  .hero{position:relative;overflow:hidden;color:#fff;
-    background:radial-gradient(1000px 360px at -10% -40%,rgba(91,46,245,.45),transparent 60%),
-               radial-gradient(900px 340px at 110% -20%,rgba(177,60,244,.45),transparent 60%),
-               linear-gradient(135deg,var(--purple),var(--magenta)); padding:28px 20px;}
-  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .title{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:10px}
-  .title h1{margin:0;font-size:28px}
-  .pill{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);
-        padding:6px 10px;border-radius:999px;font-weight:700;font-size:12px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 32px rgba(17,24,39,.08);margin:-18px auto 28px}
-  .panel .inner{padding:22px}
-  .row{display:grid;grid-template-columns:1fr 280px; gap:22px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
-  .meta{color:var(--slate);font-size:14px}
-  .badge{display:inline-block;background:var(--dark);color:#fff;border-radius:10px;padding:6px 10px;font-weight:800;font-size:12px}
-  h2{margin:18px 0 8px;font-size:20px}
-  h3{margin:14px 0 8px;font-size:16px}
-  ul{margin:8px 0 12px 20px}
-  .code{position:relative;background:#0f172a;color:#e2e8f0;border-radius:12px;padding:12px 12px 46px;overflow:auto}
-  .code pre{margin:0;white-space:pre-wrap}
-  .copybar{position:absolute;right:8px;bottom:8px;display:flex;gap:8px}
-  .btn{appearance:none;border:0;border-radius:10px;cursor:pointer;font-weight:800}
-  .btn.primary{background:var(--dark);color:#fff;padding:10px 14px}
-  .btn.soft{background:#fff;border:1px solid var(--line);padding:10px 12px}
-  .btn.link{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px 10px}
-  .cta{display:flex;gap:10px;flex-wrap:wrap}
-  .aside .box{background:#f9fafb;border:1px solid var(--line);border-radius:12px;padding:14px}
-  .checklist li{list-style:none;position:relative;padding-left:22px;margin:6px 0}
-  .checklist li:before{content:"";position:absolute;left:0;top:6px;width:14px;height:14px;border-radius:3px;background:#eafff1;border:1px solid #b5f1c7}
-  .checklist li:after{content:"";position:absolute;left:4px;top:8px;width:6px;height:10px;border:2px solid var(--good);border-top:0;border-left:0;transform:rotate(45deg)}
-  .note{font-size:12px;color:#64748b}
-  .footer{padding:18px 0 36px;color:var(--muted);font-size:13px}
-  @media (max-width:920px){.row{grid-template-columns:1fr}}
-  /* Inline logo sizing */
-  .logo{width:40px;height:40px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carl Willis • AI Roadmap Dashboard (Interactive SVG)</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #101733;
+      --panel2: #0f1a3a;
+      --text: #e9ecf5;
+      --muted: #a9b1c7;
+      --accent: #6aa0ff;
+      --accent2: #6efacc;
+      --danger: #ff6a8b;
+      --ok: #8bff6a;
+      --warn: #ffd36a;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(1200px 700px at 65% 20%, #151b39 0%, var(--bg) 60%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    header h1 { font-size: 20px; margin: 0; letter-spacing: 0.2px; }
+    header .meta { font-size: 12px; color: var(--muted); }
+    .wrap { display: grid; grid-template-columns: 1fr 360px; gap: 18px; padding: 0 16px 18px; }
+    .board { background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 10px; }
+    .side { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; position: sticky; top: 12px; height: calc(100dvh - 100px); overflow: auto; }
+    .side h2 { margin: 0 0 8px; font-size: 18px; }
+    .side p, .side li { color: var(--muted); line-height: 1.5; }
+    .btnrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .chip { border: 1px solid rgba(255,255,255,0.14); padding: 6px 10px; border-radius: 999px; font-size: 12px; cursor: pointer; user-select: none; }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+    .cta { margin-top: 14px; display: grid; gap: 10px; }
+    .cta a { text-decoration: none; color: var(--text); background: linear-gradient(180deg, #1b2a5e, #13224c); border: 1px solid rgba(106,160,255,0.45); padding: 10px 12px; border-radius: 10px; font-size: 14px; }
+    .cta a:hover { filter: brightness(1.1); }
+    .legend { display: flex; gap: 12px; align-items: center; margin-top: 8px; font-size: 12px; color: var(--muted); }
+    .dot { width: 10px; height: 10px; border-radius: 999px; display: inline-block; margin-right: 6px; }
+    .kbd { font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background: #0b132b; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 2px 6px; font-size: 12px; }
+    .note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    svg { width: 100%; height: auto; display: block; }
+    .tip { fill: var(--muted); font-size: 11px; }
+  </style>
 </head>
 <body>
-
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <div class="brand">
-        <!-- Inline SVG logo approximation -->
-        <svg class="logo" viewBox="0 0 100 100" aria-label="OptimaNova AI">
-          <defs>
-            <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="var(--blue)"/>
-              <stop offset="1" stop-color="var(--magenta)"/>
-            </linearGradient>
-          </defs>
-          <!-- Outer ring -->
-          <circle cx="50" cy="50" r="44" fill="none" stroke="var(--ink)" stroke-width="5"/>
-          <!-- Colored arcs -->
-          <path d="M18,50 A32,32 0 0 1 82,50" fill="none" stroke="var(--magenta)" stroke-width="6" stroke-linecap="round"/>
-          <path d="M82,50 A32,32 0 0 1 18,50" fill="none" stroke="var(--blue)" stroke-width="6" stroke-linecap="round"/>
-          <!-- N mark -->
-          <rect x="28" y="22" width="9" height="56" fill="var(--dark)"/>
-          <rect x="63" y="22" width="9" height="56" fill="#2b0b15"/>
-          <polygon points="37,22 46,22 64,78 55,78" fill="var(--dark)"/>
-        </svg>
-        <div class="name" style="font-weight:800;letter-spacing:.3px">OptimaNova AI</div>
-      </div>
-      <div class="title">
-        <h1>Session 1 Pre-work</h1>
-        <span class="pill">Executive AI Masterclass</span>
-      </div>
-      <div class="meta" style="margin-top:6px">
-        Starts Tue, Aug 12 at 12:00 PM ET, live on Zoom
-      </div>
-      <div class="cta" style="margin-top:12px">
-        <a href="https://us06web.zoom.us/j/88437686598?pwd=usDoLKH5eWEcbDFAZacRhYuW7fLOWJ.1" class="btn link">Join Session 1 on Zoom</a>
-        <a href="https://optimanova.ai/executive-ai-masterclass" class="btn link">View Agenda and FAQs</a>
-        <a href="mailto:info@optimanova.ai" class="btn link">Support</a>
-      </div>
-    </div>
+  <header>
+    <h1>Carl Willis • AI Roadmap Dashboard</h1>
+    <div class="meta">Interactive quick start for a D.C. anchor and reporter adopting AI</div>
   </header>
 
-  <!-- MAIN PANEL -->
-  <main class="panel">
-    <div class="inner wrap">
-      <div class="row">
-        <section>
-          <p class="meta"><span class="badge">Total time 10–15 minutes</span> Arrive with clear outcomes, one page of context, and two quick LLM outputs.</p>
+  <div class="wrap">
+    <div class="board">
+      <!-- Responsive interactive SVG -->
+      <svg viewBox="0 0 1200 760" role="img" aria-label="Interactive roadmap">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1b2a5e" />
+            <stop offset="100%" stop-color="#0f1a3a" />
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#113c62" />
+            <stop offset="100%" stop-color="#0e2a49" />
+          </linearGradient>
+          <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="6" result="b"/>
+            <feOffset dx="0" dy="2" result="o"/>
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.25"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode in="o"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <style>
+            .card { cursor: pointer; }
+            .card:hover rect { stroke: #6aa0ff; }
+            .title { fill: #e9ecf5; font-size: 16px; font-weight: 700; letter-spacing: .2px; }
+            .caption { fill: #a9b1c7; font-size: 12px; }
+            .kpi { fill: #e9ecf5; font-size: 28px; font-weight: 700; }
+            .pill { fill: #6aa0ff; }
+            .month { fill: #09132d; }
+          </style>
+        </defs>
 
-          <h2>1) Set your outcomes</h2>
-          <ul>
-            <li>By the end of this masterclass, success looks like…</li>
-            <li>The three decisions my board expects from me are…</li>
-            <li>The biggest constraint I must respect is…</li>
-          </ul>
+        <!-- Grid backdrop -->
+        <g opacity="0.18">
+          <rect x="0" y="0" width="1200" height="760" fill="url(#g1)" />
+          <g stroke="#ffffff" stroke-opacity="0.08" stroke-width="1">
+            <!-- vertical lines -->
+            <g>
+              <path d="M80 60 v640" />
+              <path d="M380 60 v640" />
+              <path d="M680 60 v640" />
+              <path d="M980 60 v640" />
+            </g>
+            <!-- horizontal lines -->
+            <g>
+              <path d="M80 60 h1040" />
+              <path d="M80 240 h1040" />
+              <path d="M80 420 h1040" />
+              <path d="M80 600 h1040" />
+            </g>
+          </g>
+        </g>
 
-          <h2>2) Gather one page of context</h2>
-          <ul>
-            <li>A recent internal memo or report you produce often</li>
-            <li>A time-consuming task that repeats weekly</li>
-            <li>A customer, constituent, or donor journey you want to improve</li>
-          </ul>
+        <!-- Header block -->
+        <g transform="translate(80,60)">
+          <rect width="1040" height="140" rx="16" fill="url(#g2)" filter="url(#soft)" />
+          <text x="24" y="44" class="title">AI Adoption Roadmap</text>
+          <text x="24" y="72" class="caption">Built for a metro anchor and field reporter. Click any card to see steps, tools, and prompts.</text>
+          
+          <!-- KPI chips -->
+          <g transform="translate(24,90)">
+            <rect width="150" height="34" rx="8" fill="#142757" stroke="#2b4ea3" stroke-opacity="0.6" />
+            <text x="12" y="22" class="caption">Time saved target</text>
+            <text x="122" y="22" class="caption" text-anchor="end">10 hrs wk</text>
+          </g>
+          <g transform="translate(184,90)">
+            <rect width="190" height="34" rx="8" fill="#142757" stroke="#2b4ea3" stroke-opacity="0.6" />
+            <text x="12" y="22" class="caption">Accuracy and verification</text>
+            <text x="170" y="22" class="caption" text-anchor="end">trust first</text>
+          </g>
+          <g transform="translate(384,90)">
+            <rect width="200" height="34" rx="8" fill="#142757" stroke="#2b4ea3" stroke-opacity="0.6" />
+            <text x="12" y="22" class="caption">On air prep</text>
+            <text x="180" y="22" class="caption" text-anchor="end">faster briefs</text>
+          </g>
+        </g>
 
-          <h2>3) Run two prompts</h2>
+        <!-- Month swimlanes -->
+        <g transform="translate(80,220)">
+          <!-- 0-3 months -->
+          <g class="card" data-panel="m3" transform="translate(0,0)">
+            <rect width="300" height="170" rx="14" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="30" class="title">0 to 3 months</text>
+            <text x="16" y="56" class="caption">Setup and quick wins</text>
+            <text x="16" y="92" class="caption">• Transcription pipeline
+• Research copilot
+• Draft to air script flow</text>
+            <text x="16" y="152" class="caption">Click to view steps</text>
+          </g>
+          <!-- 3-6 months -->
+          <g class="card" data-panel="m6" transform="translate(300,0)">
+            <rect width="300" height="170" rx="14" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="30" class="title">3 to 6 months</text>
+            <text x="16" y="56" class="caption">Workflows and templates</text>
+            <text x="16" y="92" class="caption">• Investigative research kit
+• FOIA assistant
+• Style tuned scriptwriter</text>
+            <text x="16" y="152" class="caption">Click to view steps</text>
+          </g>
+          <!-- 6-9 months -->
+          <g class="card" data-panel="m9" transform="translate(600,0)">
+            <rect width="300" height="170" rx="14" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="30" class="title">6 to 9 months</text>
+            <text x="16" y="56" class="caption">Scale and collaboration</text>
+            <text x="16" y="92" class="caption">• Segment library
+• B-roll finder
+• Fact check console</text>
+            <text x="16" y="152" class="caption">Click to view steps</text>
+          </g>
+          <!-- 9-12 months -->
+          <g class="card" data-panel="m12" transform="translate(900,0)">
+            <rect width="300" height="170" rx="14" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="30" class="title">9 to 12 months</text>
+            <text x="16" y="56" class="caption">Personalization and IP</text>
+            <text x="16" y="92" class="caption">• Personal voice model
+• Evergreen explainers
+• Revenue experiments</text>
+            <text x="16" y="152" class="caption">Click to view steps</text>
+          </g>
+        </g>
 
-          <div class="card code" id="code1">
-            <h3 style="color:#c7d2fe;margin-top:0">Use-case ideas</h3>
-            <pre>Act as a senior strategy advisor. Given this context [paste 3–5 sentences], list five high‑ROI GenAI use cases for my organization. For each, include: problem, who benefits, time saved, data needed, and risk flags.</pre>
-            <div class="copybar">
-              <button class="btn soft" data-copy="#code1">Copy</button>
-            </div>
-          </div>
+        <!-- Quick actions row -->
+        <g transform="translate(80,420)">
+          <text x="0" y="0" class="title">Quick actions</text>
+          <g class="card" data-panel="qa1" transform="translate(0,16)">
+            <rect width="260" height="150" rx="12" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="34" class="caption">Pitch generator</text>
+            <text x="16" y="70" class="caption">Turn notes into concise pitches with sources and angles</text>
+            <text x="16" y="126" class="caption">Click for prompt</text>
+          </g>
+          <g class="card" data-panel="qa2" transform="translate(280,16)">
+            <rect width="260" height="150" rx="12" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="34" class="caption">Script builder</text>
+            <text x="16" y="70" class="caption">Cold open, top, nut graf, tag, social cut</text>
+            <text x="16" y="126" class="caption">Click for prompt</text>
+          </g>
+          <g class="card" data-panel="qa3" transform="translate(560,16)">
+            <rect width="260" height="150" rx="12" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="34" class="caption">Verification kit</text>
+            <text x="16" y="70" class="caption">Citations, corroboration, image forensics, embargoes</text>
+            <text x="16" y="126" class="caption">Click for checklist</text>
+          </g>
+          <g class="card" data-panel="qa4" transform="translate(840,16)">
+            <rect width="260" height="150" rx="12" fill="url(#g2)" stroke="rgba(255,255,255,0.12)" filter="url(#soft)" />
+            <text x="16" y="34" class="caption">Field kit</text>
+            <text x="16" y="70" class="caption">Shot list, lower thirds, live read safety net</text>
+            <text x="16" y="126" class="caption">Click for checklist</text>
+          </g>
+        </g>
 
-          <div class="card code" id="code2" style="margin-top:12px">
-            <h3 style="color:#c7d2fe;margin-top:0">One-page executive brief</h3>
-            <pre>Turn the attached or pasted text into a one‑page executive brief. Include: KPIs, decisions needed, risks, and a 90‑day starter plan with owners.</pre>
-            <div class="copybar">
-              <button class="btn soft" data-copy="#code2">Copy</button>
-            </div>
-          </div>
-
-          <h2>Bring to Session 1</h2>
-          <ul class="checklist">
-            <li>Your three outcomes from step 1</li>
-            <li>One page of context from step 2</li>
-            <li>Both prompt outputs from step 3</li>
-          </ul>
-
-          <p class="note">Privacy: do not paste confidential data into public AI tools. Use summaries or redacted text. We will cover safe workflows in class.</p>
-        </section>
-
-        <!-- ASIDE -->
-        <aside class="aside">
-          <div class="box">
-            <h3 style="margin-top:0">Quick links</h3>
-            <p style="margin:8px 0"><a href="https://us06web.zoom.us/j/88437686598?pwd=usDoLKH5eWEcbDFAZacRhYuW7fLOWJ.1">Join Session 1 on Zoom</a></p>
-            <p style="margin:8px 0"><a href="https://optimanova.ai/executive-ai-masterclass">Agenda and FAQs</a></p>
-            <p style="margin:8px 0"><a href="https://www.linkedin.com/groups/13355293/">LinkedIn Group</a></p>
-            <p style="margin:8px 0"><a href="https://calendly.com/joepaul11/executive-ai-masterclass">Schedule Coaching Hour</a></p>
-            <p style="margin:8px 0"><a href="https://zoom.us/test">Test Your Setup</a></p>
-          </div>
-          <div class="box" style="margin-top:14px">
-            <h3 style="margin-top:0">Need help</h3>
-            <p class="meta" style="margin:0">Email <a href="mailto:info@optimanova.ai">info@optimanova.ai</a></p>
-          </div>
-        </aside>
-      </div>
+        <!-- Footer help text -->
+        <g transform="translate(80,610)">
+          <text x="0" y="0" class="caption">Tip: press the keys shown to open panels faster</text>
+          <text x="0" y="26" class="tip">Keys: <tspan class="kbd">1</tspan> 0 to 3 • <tspan class="kbd">2</tspan> 3 to 6 • <tspan class="kbd">3</tspan> 6 to 9 • <tspan class="kbd">4</tspan> 9 to 12 • <tspan class="kbd">Q</tspan> Pitch • <tspan class="kbd">W</tspan> Script • <tspan class="kbd">E</tspan> Verify • <tspan class="kbd">R</tspan> Field</text>
+        </g>
+      </svg>
     </div>
-  </main>
 
-  <div class="footer wrap">
-    © <span id="y"></span> OptimaNova AI. All rights reserved.
+    <aside class="side" id="panel">
+      <h2 id="p-title">Welcome</h2>
+      <p id="p-desc">Click a card on the left to load steps, tools, and prompts. This side panel becomes the cheat sheet. Copy anything into your notes or CMS. Everything is designed for a D.C. anchor and reporter who wants speed with standards.</p>
+      <div class="btnrow" id="p-tags"></div>
+      <ol id="p-list"></ol>
+
+      <div class="cta" id="p-cta"></div>
+      <div class="legend">
+        <span><span class="dot" style="background: var(--accent)"></span>AI assist</span>
+        <span><span class="dot" style="background: var(--warn)"></span>Human review</span>
+        <span><span class="dot" style="background: var(--ok)"></span>Publish ready</span>
+      </div>
+      <p class="note">Security note: keep unpublished material off public tools. Store footage and drafts in the newsroom system first. Use private API keys. Follow station legal and editorial rules.</p>
+    </aside>
   </div>
 
-<script>
-  // Copy to clipboard
-  document.querySelectorAll('[data-copy]').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      const sel = btn.getAttribute('data-copy');
-      const pre = document.querySelector(sel+' pre');
-      const text = pre.innerText;
-      navigator.clipboard.writeText(text).then(()=>{
-        const t = btn.textContent;
-        btn.textContent = 'Copied';
-        setTimeout(()=>btn.textContent = t, 1200);
+  <script>
+    const panel = document.getElementById('panel');
+    const pTitle = document.getElementById('p-title');
+    const pDesc  = document.getElementById('p-desc');
+    const pTags  = document.getElementById('p-tags');
+    const pList  = document.getElementById('p-list');
+    const pCta   = document.getElementById('p-cta');
+
+    const data = {
+      m3: {
+        title: '0 to 3 months • Setup and quick wins',
+        desc: 'Stand up a safe, fast pipeline from field to script. Win back hours through reliable automation.',
+        tags: ['Otter or Whisper', 'Notion', 'ChatGPT', 'Perplexity', 'Frame.io'],
+        steps: [
+          'Transcription pipeline: phone audio to folder to auto transcript using Whisper or Otter',
+          'Research copilot: set up ChatGPT and a web search tool with custom instructions for your beat',
+          'Template hub: on air script, web article, and social cut templates in Notion or Google Docs',
+          'Voice protection: configure default fact check prompts and citation requirements',
+          'Live read backup: generate emergency two line summaries for breaking news'
+        ],
+        cta: [
+          ['Open prompt: Research copilot', 'javascript:void(0)', `Prompt: Act as a D.C. metro news researcher. Return 5 concise bullets with citations for any topic I paste. Always show sources, dates, and quote any claims. Flag uncertainty.`],
+          ['Install Whisper local', 'https://github.com/openai/whisper', 'Guide for local offline transcription']
+        ]
+      },
+      m6: {
+        title: '3 to 6 months • Workflows and templates',
+        desc: 'Codify the way you work so the team can repeat it. Improve reliability and speed.',
+        tags: ['Playbooks', 'FOIA', 'Checklists', 'Style guide'],
+        steps: [
+          'Investigative research kit with a repeatable search pattern and contact tree',
+          'FOIA assistant: draft requests, track deadlines, suggest agencies and records',
+          'Style tuned scriptwriter: load examples and fine tune tone with few shot prompts',
+          'Lower thirds generator that pulls names and titles from notes',
+          'A roll and B roll shot list generator based on story outline'
+        ],
+        cta: [
+          ['FOIA starter prompt', 'javascript:void(0)', 'Prompt: Draft a FOIA request for the following event. Include specific records, date ranges, and the public interest rationale. Output as a letter.'],
+          ['Story kit template', 'javascript:void(0)', 'Outline sections: Context, Stakeholders, Timeline, Claims, Evidence, What viewers can do']
+        ]
+      },
+      m9: {
+        title: '6 to 9 months • Scale and collaboration',
+        desc: 'Build libraries and shared assets. Reduce duplicated effort.',
+        tags: ['Segment library', 'B roll finder', 'Fact check console'],
+        steps: [
+          'Segment library with search tags and re-versioning for sweeps and specials',
+          'B roll finder that maps keywords to your archive with suggested cutaways',
+          'Fact check console that enforces source diversity and date checks',
+          'Auto build rundowns for web, YouTube, and socials from a single source'
+        ],
+        cta: [
+          ['Build a tag scheme', 'javascript:void(0)', 'People, Places, Issues, Agencies, Dates, Outcomes'],
+          ['Archive map prompt', 'javascript:void(0)', 'Analyze this transcript and suggest 10 searchable B roll terms from our archive']
+        ]
+      },
+      m12: {
+        title: '9 to 12 months • Personalization and IP',
+        desc: 'Distill your voice and create evergreen value. Explore monetizable IP with ethics intact.',
+        tags: ['Personal voice', 'Evergreen explainers', 'Audience loops'],
+        steps: [
+          'Build a personal voice rubric with do and do not examples',
+          'Produce a set of evergreen explainers on recurring civic topics with yearly refresh tasks',
+          'Experiment with newsletters and text updates while complying with employer policy',
+          'Measure retention and completion across platforms and feed insights back into scripts'
+        ],
+        cta: [
+          ['Voice rubric template', 'javascript:void(0)', 'Tone, pacing, phrases to avoid, sign off lines, standards for attribution'],
+          ['Explainer brief prompt', 'javascript:void(0)', 'Create a 90 second explainer brief with a clear CTA and sources']
+        ]
+      },
+      qa1: {
+        title: 'Quick action • Pitch generator',
+        desc: 'Turn raw notes into a clean, source backed pitch in under 60 seconds.',
+        tags: ['Angles', 'Sources', 'Risk flags'],
+        steps: [
+          'Paste notes',
+          'Get 3 angles with who is affected and why now',
+          'Receive 5 sources with contact paths and current titles',
+          'See risk flags: legal, safety, accuracy',
+          'One paragraph pitch with headline options'
+        ],
+        cta: [
+          ['Copy the prompt', 'javascript:void(0)', 'You are my pitch generator. Return 3 angles, 5 credible sources with links and current titles, 3 risk flags, and a one paragraph pitch. Use today’s date and DC context.']
+        ]
+      },
+      qa2: {
+        title: 'Quick action • Script builder',
+        desc: 'Generate a tight script with structure that fits the show.',
+        tags: ['Structure', 'Voice', 'Timing'],
+        steps: [
+          'Cold open and sound bite suggestions',
+          'Top, setup, nut graf, develop, close',
+          'Lower thirds and supers list',
+          'Two alt tags for web and YT description'
+        ],
+        cta: [
+          ['Copy the prompt', 'javascript:void(0)', 'Build a 90 second script with the following structure. Include suggested sound bites and two alt tags.']
+        ]
+      },
+      qa3: {
+        title: 'Quick action • Verification kit',
+        desc: 'Protect trust. No surprises on air. Make the chain of evidence visible.',
+        tags: ['Citations', 'Dates', 'Images'],
+        steps: [
+          'Require citations with dates next to claims',
+          'Cross check names and titles today',
+          'Run image forensics and reverse search',
+          'Write the one line correction plan before air'
+        ],
+        cta: [
+          ['Open checklist', 'javascript:void(0)', 'Verify names, titles, dates, locations, numbers, and embargoes. Capture links in your CMS.']
+        ]
+      },
+      qa4: {
+        title: 'Quick action • Field kit',
+        desc: 'Stay calm in the scramble. Have the reads and labels ready.',
+        tags: ['Shot list', 'L3s', 'Live read'],
+        steps: [
+          'Generate a shot list from the outline',
+          'Auto build lower thirds from names in notes',
+          'Create two line live read backup',
+          'Safety reminder for scene and team'
+        ],
+        cta: [
+          ['Copy the prompt', 'javascript:void(0)', 'From this outline, produce a shot list, L3s with names and titles, and a two line live read backup.']
+        ]
+      }
+    };
+
+    function loadPanel(key) {
+      const item = data[key];
+      if (!item) return;
+      pTitle.textContent = item.title;
+      pDesc.textContent = item.desc;
+      pTags.innerHTML = '';
+      item.tags.forEach(t => {
+        const b = document.createElement('span');
+        b.className = 'chip';
+        b.textContent = t;
+        pTags.appendChild(b);
       });
+      pList.innerHTML = '';
+      item.steps.forEach(s => {
+        const li = document.createElement('li');
+        li.textContent = s;
+        pList.appendChild(li);
+      });
+      pCta.innerHTML = '';
+      item.cta.forEach(([label, href, tip]) => {
+        const a = document.createElement('a');
+        a.textContent = label;
+        a.href = href;
+        a.addEventListener('click', (e) => {
+          if (href.startsWith('javascript')) {
+            e.preventDefault();
+            navigator.clipboard.writeText(tip).then(() => {
+              a.textContent = label + ' • copied';
+              setTimeout(() => a.textContent = label, 1400);
+            }).catch(() => {
+              alert(tip);
+            });
+          }
+        });
+        pCta.appendChild(a);
+      });
+    }
+
+    // Click handlers for SVG cards
+    document.querySelectorAll('svg .card').forEach(el => {
+      el.addEventListener('click', () => loadPanel(el.getAttribute('data-panel')));
     });
-  });
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+
+    // Keyboard shortcuts
+    const keymap = { '1':'m3','2':'m6','3':'m9','4':'m12','q':'qa1','w':'qa2','e':'qa3','r':'qa4' };
+    window.addEventListener('keydown', (e) => {
+      const k = e.key.toLowerCase();
+      if (keymap[k]) loadPanel(keymap[k]);
+    });
+
+    // Default panel
+    loadPanel('m3');
+  </script>
 </body>
 </html>
